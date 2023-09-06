@@ -2,19 +2,20 @@ import React from "react";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import styles from "./header.module.css";
+import { Button, Typography } from "@mui/material";
 
 export default function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  if (!user) {
-    return <p>You are not logged in.</p>;
-  }
-
-  return (
+  return user ? (
     <header className={styles.header}>
-      Welcome {user?.name}!{" "}
-      <button
+      <Typography variant="h6" component="h1" gutterBottom>
+        Welcome {user?.name}!
+      </Typography>
+      <Button
+        type="submit"
+        variant="contained"
         onClick={() => {
           logout().then(() => {
             navigate("/");
@@ -22,7 +23,7 @@ export default function Header() {
         }}
       >
         Sign out
-      </button>
+      </Button>
     </header>
-  );
+  ) : null;
 }

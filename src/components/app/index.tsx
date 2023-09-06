@@ -11,7 +11,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import Login from "../login";
-import UsersList from "../users-list";
+import UsersList from "../posts-list";
 import Header from "../header";
 
 function App() {
